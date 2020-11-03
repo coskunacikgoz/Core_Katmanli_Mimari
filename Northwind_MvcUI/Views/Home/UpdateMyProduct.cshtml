@@ -1,0 +1,17 @@
+﻿
+@model int
+
+@{
+    ViewBag.Title = "UpdateMyProduct";
+}
+
+<h2>UpdateMyProduct</h2>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="UpdateMyProduct" asp-controller="Home" method="post">
+            @await Component.InvokeAsync("ProductMani",new { id = Model})
+        </form>
+    </div>
+</div>

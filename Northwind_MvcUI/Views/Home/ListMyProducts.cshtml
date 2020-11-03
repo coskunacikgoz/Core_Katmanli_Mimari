@@ -1,0 +1,39 @@
+﻿
+@model Northwind_MvcUI.Models.ViewModels.ListProductsViewModel
+
+@{
+    ViewBag.Title = "ListMyProducts";
+}
+
+<h2>ListMyProducts</h2>
+<hr />
+
+@if (TempData["message"] != null)
+{
+    <div class="alert alert-info">@TempData["message"]</div>
+}
+
+<table class="table table-responsive">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Category Name</th>
+            <th>Unit Price</th>
+            <th>Units In Stock</th>
+            <th colspan="2"><a asp-action="AddMyProduct" asp-controller="Home" class="btn btn-block btn-default">Add Product</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Products)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@(item.CategoryId == null ? "No Category":item.Category.CategoryName)</td>
+                <td>@item.UnitPrice.ToString("C2")</td>
+                <td>@item.UnitsInStock</td>
+                <td><a asp-action="UpdateMyProduct" asp-controller="Home" asp-route-id="@item.ProductID" class="btn btn-xs btn-primary">Update</a></td>
+                <td><a asp-action="DeleteMyProduct" asp-controller="Home" asp-route-id="@item.ProductID" class="btn btn-xs btn-danger">Delete</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

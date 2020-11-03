@@ -1,0 +1,16 @@
+﻿
+
+@{
+    ViewBag.Title = "AddMyProduct";
+}
+
+<h2>AddMyProduct</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="AddMyProduct">
+            @await  Component.InvokeAsync("ProductMani")
+        </form>
+    </div>
+</div>
+
